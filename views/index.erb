@@ -1,6 +1,9 @@
 <style type="text/css" media="screen">
+body {
+  font-family: Helvetica;
+}
+
 table{
-  
   width: 100%;
   border-top: 1px solid #999;
   border-left: 1px solid #999;
@@ -10,9 +13,21 @@ table td, table th{
   border-right: 1px solid #999;
   border-bottom: 1px solid #999;
 }
+table th {
+  background-color: rgb(230, 230, 230);
+}
 table td{
   padding: 3px;
   text-align: left;
+}
+table td.numeric {
+  text-align: right;
+}
+table tr.totals {
+  background-color: rgb(230, 230, 230);
+}
+table tr.totals td {
+  font-weight: bold;
 }
 </style>
 
@@ -21,28 +36,33 @@ table td{
 
 <% @products.each do |product| %>
 
-<h2><%= product.vendor_identifier %></h2>
+<h2><%= product.title %></h2>
 <table>
   <tr>
     <th>Date</th>
     <th>Type</th>
     <th>Units</th>
     <th>Price</th>
-    <th>Currency</th>
     <th>Total</th>
     <th>Country</th>
   </tr>
-  <% product.daily_reports.each do |report| %>
+  <% product.daily_reports.sort_by { |report| report.date_of }.each do |report| %>
   <tr>
     <td><%= report.date_of %></td>
     <td><%= report.sale_type %></td>
-    <td><%= report.units %></td>
-    <td><%= report.customer_price %></td>
-    <td><%= report.currency %></td>
-    <td><%= report.customer_price * report.units %></td>
+    <td class="numeric"><%= report.units %></td>
+    <td class="numeric"><%= report.royalty_price %></td>
+    <td class="numeric"><%= report.subtotal %></td>
     <td><%= report.country.country_code %></td>
   </tr>
   <% end %>
+  <tr class="totals">
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="numeric"><%= product.daily_reports.map { |report| report.units }.sum %></td>
+    <td>&nbsp;</td>
+    <td class="numeric"><%= product.daily_reports.map { |report| report.subtotal }.sum %></td>
+    <td>&nbsp;</td>
   </table>
 <% end %>
 
