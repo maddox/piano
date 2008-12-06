@@ -15,7 +15,7 @@ itts = agent.submit(login_form)
 report_form = itts.form_with(:name => "frmVendorPage")
 report_form.field_with(:name => "9.7").value = "Summary"
 report_form.field_with(:name => "9.9").value = "Daily"
-report_form.field_with(:name => "hiddenDayOrWeekSelection").value = "12/04/2008"
+report_form.field_with(:name => "hiddenDayOrWeekSelection").value = "11/29/2008"
 report_form.field_with(:name => "hiddenSubmitTypeName").value = "Preview"
 report_page = agent.submit(report_form)
 
@@ -33,6 +33,8 @@ puts date.class
   country = nil
   product = nil
   product = Product.find_or_create_by_vendor_identifier(cols[16].innerHTML)
+  product.title = cols[2].innerHTML;
+  product.save
   country = Country.find_or_create_by_country_code(cols[10].innerHTML)
 
   report = DailyReport.create( :product_type => cols[4].innerHTML,
