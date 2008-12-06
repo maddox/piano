@@ -32,6 +32,10 @@ class DailyReport < ActiveRecord::Base
     end
   end
 
+  def subtotal
+    royalty_price * units
+  end
+
   validates_uniqueness_of :date_of, :scope => [:country_id, :product_id ]
 end
 
