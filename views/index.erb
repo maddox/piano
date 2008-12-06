@@ -1,0 +1,48 @@
+<style type="text/css" media="screen">
+table{
+  
+  width: 100%;
+  border-top: 1px solid #999;
+  border-left: 1px solid #999;
+  border-collapse: collapse;
+}
+table td, table th{
+  border-right: 1px solid #999;
+  border-bottom: 1px solid #999;
+}
+table td{
+  padding: 3px;
+  text-align: left;
+}
+</style>
+
+
+
+
+<% @products.each do |product| %>
+
+<h2><%= product.vendor_identifier %></h2>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Type</th>
+    <th>Units</th>
+    <th>Price</th>
+    <th>Currency</th>
+    <th>Total</th>
+    <th>Country</th>
+  </tr>
+  <% product.daily_reports.each do |report| %>
+  <tr>
+    <td><%= report.date_of %></td>
+    <td><%= report.sale_type %></td>
+    <td><%= report.units %></td>
+    <td><%= report.customer_price %></td>
+    <td><%= report.currency %></td>
+    <td><%= report.customer_price * report.units %></td>
+    <td><%= report.country.country_code %></td>
+  </tr>
+  <% end %>
+  </table>
+<% end %>
+
