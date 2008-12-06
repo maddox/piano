@@ -19,7 +19,7 @@ Get today's reports
 <code>ruby lib/get_reports.rb</code>
 
 Start application
-<code>ruby itunes_reports.rb</code>
+<code>ruby piano.rb</code>
 
 Voila. There's all your reports.
 
