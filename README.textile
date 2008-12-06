@@ -1,0 +1,35 @@
+h1. Piano
+
+h2. What is it?
+
+Piano is a simple Sinatra app that displays your iTunes download data. It doesn't do much yet (really it does nothing to improve anything :), but advanced reporting will eventually be available. Maybe you want to help?
+
+h2. How does it work?
+
+Apple hates you. Why else would they give you such terrible sales statistics? Number of downloads? Yeah, that really helps a ton. They don't even respect you enough to give you a total for your daily sales.
+
+Piano gets your daily stats for your iPhone applications and stores them in a local sqlite database. Now we can interact with the data like you wish you could on Apple's site.
+
+h2. Getting started
+
+Create the database
+<code>rake db:migrate</code>
+
+Get today's reports
+<code>ruby lib/get_reports.rb</code>
+
+Start application
+<code>ruby itunes_reports.rb</code>
+
+Voila. There's all your reports.
+
+Set up a cron for get_reports.rb so it automatically fetches your reports every day.
+
+h2. What's next?
+
+Piano doesn't do much yet. But its just getting started. Soon it will:
+
+* Dashboard showing total downloads
+* View reports by product or country
+* Sweet awesome graphs
+* authentication even
