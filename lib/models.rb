@@ -8,13 +8,13 @@ ActiveRecord::Base.establish_connection({
 
 # define a simple model 
 class Country < ActiveRecord::Base
-  has_many :daily_reports
+  has_many :daily_reports, :order_by => :date_of
 
   validates_uniqueness_of :country_code
 end
 
 class Product < ActiveRecord::Base
-  has_many :daily_reports
+  has_many :daily_reports, :order_by => :date_of
   
   validates_uniqueness_of :vendor_identifier
 end

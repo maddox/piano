@@ -46,7 +46,7 @@ table tr.totals td {
     <th>Total</th>
     <th>Country</th>
   </tr>
-  <% product.daily_reports.sort_by { |report| report.date_of }.each do |report| %>
+  <% product.daily_reports.each do |report| %>
   <tr>
     <td><%= report.date_of %></td>
     <td><%= report.sale_type %></td>
