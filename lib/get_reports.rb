@@ -3,6 +3,7 @@ require 'mechanize'
 require File.join(File.dirname(__FILE__), 'models')
 
 itunes_connect_config = YAML.load(File.read(File.join(File.dirname(__FILE__), '../','config', "config.yml")))['itunes_connect']
+date = Date.today - 1
 
 agent = WWW::Mechanize.new 
 agent.user_agent_alias = 'Mac Safari'
@@ -15,19 +16,17 @@ itts = agent.submit(login_form)
 report_form = itts.form_with(:name => "frmVendorPage")
 report_form.field_with(:name => "9.7").value = "Summary"
 report_form.field_with(:name => "9.9").value = "Daily"
-report_form.field_with(:name => "hiddenDayOrWeekSelection").value = "12/04/2008"
+report_form.field_with(:name => "hiddenDayOrWeekSelection").value = date.strftime("%m/%d/%Y")
 report_form.field_with(:name => "hiddenSubmitTypeName").value = "Preview"
 report_page = agent.submit(report_form)
 
 report_table = (report_page/"table")[4]
 rows = (report_table/"tr")
-date = Date.parse((report_page/"h4").innerHTML.match(/\d+\/\d+\/\d\d\d\d/).to_s)
-
-puts date.class
-
+puts date
 (1...rows.size).each do |i|
   row = rows[i] 
   cols = (row/"td")
+  puts cols[16].innerHTML
   
   report = nil
   country = nil
