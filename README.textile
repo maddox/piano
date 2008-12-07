@@ -23,7 +23,7 @@ h4. Gems
 
 h4. Other stuff
 
-sqlite
+* sqlite
 
 h3. You can do it!
 
