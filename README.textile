@@ -12,36 +12,34 @@ Apple hates you. Why else would they give you such terrible sales statistics? Nu
 
 Piano gets your daily stats for your iPhone applications and stores them in a local sqlite database. Now we can interact with the data like you wish you could on Apple's site.
 
-h2. Getting started
+h2. Dependencies
 
-h3. Dependencies
-
-h4. Gems
+h3. Gems
 
 * Sinatra
 * Mechanize
 * ActiveRecord
 * sqlite3-ruby
 
-h4. Other stuff
+h3. Other stuff
 
 * sqlite
 
-h3. You can do it!
+h2. Getting Started!
 
-h5. Create the database
+h3. Create the database
 
 <code>rake db:migrate</code>
 
-h5. Set up configs
+h3. Set up configs
 
 Enter your authentication info in _config/config.yml_. _itunes_connect_ is your iTunes Connect login information. Piano is login information for Piano. You know, so you don't publish your sales data to the world. 
 
-h5. Get today's reports
+h3. Get today's reports
 
 <code>ruby lib/get_reports.rb</code>
 
-h5. Start application
+h3. Start application
 
 <code>ruby piano.rb</code>
 
