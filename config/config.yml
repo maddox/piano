@@ -4,3 +4,4 @@ itunes_connect:
 piano:
   login: yourlogin
   password: yourpassword
+local_currency: USD

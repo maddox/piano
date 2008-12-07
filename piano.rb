@@ -6,7 +6,9 @@ require 'lib/models'
 
 include Sinatra::Authentication
 
-AUTH_CREDENTIALS = YAML.load(File.read(File.join(File.dirname(__FILE__),'config', "config.yml")))['piano']
+config = YAML.load(File.read(File.join(File.dirname(__FILE__),'config', "config.yml")))
+AUTH_CREDENTIALS = config['piano']
+LOCAL_CURRENCY = config['local_currency']
 
 # layout 'layout'
 
