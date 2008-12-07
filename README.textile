@@ -28,16 +28,20 @@ h4. Other stuff
 h3. You can do it!
 
 h4. Create the database
+
 <code>rake db:migrate</code>
 
 h4. Set up configs
+
 Enter your authentication info in _config/config.yml_. _itunes_connect_ is your iTunes Connect login information. Piano is login information for Piano. You know, so you don't publish your sales data to the world. 
 
 
 h4. Get today's reports
+
 <code>ruby lib/get_reports.rb</code>
 
 h4. Start application
+
 <code>ruby piano.rb</code>
 
 Voila. There's all your reports.
