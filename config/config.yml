@@ -1,3 +1,6 @@
 itunes_connect:
   login: steve@mac.com
   password: iprintmoney
+piano:
+  login: yourlogin
+  password: yourpassword
