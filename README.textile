@@ -12,6 +12,13 @@ Piano gets your daily stats for your iPhone applications and stores them in a lo
 
 h2. Getting started
 
+h3. Dependencies
+
+h4. Gems
+
+* Sinatra
+* Mechanize
+
 Create the database
 <code>rake db:migrate</code>
 
