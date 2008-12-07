@@ -1,5 +1,7 @@
 h1. Piano
 
+Because Apple hates you.
+
 h2. What is it?
 
 Piano is a simple Sinatra app that displays your iTunes download data. It doesn't do much yet (really it does nothing to improve anything :), but advanced reporting will eventually be available. Maybe you want to help?
@@ -27,20 +29,19 @@ h4. Other stuff
 
 h3. You can do it!
 
-h4. Create the database
+h5. Create the database
 
 <code>rake db:migrate</code>
 
-h4. Set up configs
+h5. Set up configs
 
 Enter your authentication info in _config/config.yml_. _itunes_connect_ is your iTunes Connect login information. Piano is login information for Piano. You know, so you don't publish your sales data to the world. 
 
-
-h4. Get today's reports
+h5. Get today's reports
 
 <code>ruby lib/get_reports.rb</code>
 
-h4. Start application
+h5. Start application
 
 <code>ruby piano.rb</code>
 
