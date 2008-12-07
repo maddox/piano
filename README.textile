@@ -19,7 +19,9 @@ h3. Gems
 * Sinatra
 * Mechanize
 * ActiveRecord
+* Yaml
 * sqlite3-ruby
+
 
 h3. Other stuff
 
