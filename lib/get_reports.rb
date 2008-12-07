@@ -22,11 +22,9 @@ report_page = agent.submit(report_form)
 
 report_table = (report_page/"table")[4]
 rows = (report_table/"tr")
-puts date
 (1...rows.size).each do |i|
   row = rows[i] 
   cols = (row/"td")
-  puts cols[16].innerHTML
   
   report = nil
   country = nil
