@@ -18,6 +18,14 @@ h4. Gems
 
 * Sinatra
 * Mechanize
+* ActiveRecord
+* sqlite3-ruby
+
+h4. Other stuff
+
+sqlite
+
+h3. You can do it!
 
 Create the database
 <code>rake db:migrate</code>
