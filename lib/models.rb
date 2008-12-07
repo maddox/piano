@@ -8,13 +8,13 @@ ActiveRecord::Base.establish_connection({
 
 # define a simple model 
 class Country < ActiveRecord::Base
-  has_many :daily_reports
+  has_many :daily_reports, :order => :date_of
 
   validates_uniqueness_of :country_code
 end
 
 class Product < ActiveRecord::Base
-  has_many :daily_reports
+  has_many :daily_reports, :order => :date_of
   
   validates_uniqueness_of :vendor_identifier
 end
@@ -30,6 +30,10 @@ class DailyReport < ActiveRecord::Base
     when 7
       "Upgrade"
     end
+  end
+
+  def subtotal
+    royalty_price * units
   end
 
   validates_uniqueness_of :date_of, :scope => [:country_id, :product_id ]
