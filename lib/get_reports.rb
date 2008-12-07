@@ -33,8 +33,6 @@ puts date.class
   country = nil
   product = nil
   product = Product.find_or_create_by_vendor_identifier(cols[16].innerHTML)
-  product.title = cols[2].innerHTML;
-  product.save
   country = Country.find_or_create_by_country_code(cols[10].innerHTML)
 
   report = DailyReport.create( :product_type => cols[4].innerHTML,
