@@ -4,6 +4,11 @@ require 'yaml'
 require 'lib/authentication'
 require 'lib/models'
 
+require 'currency'
+require 'currency/exchange/rate/deriver'
+require 'currency/exchange/rate/source/xe'
+require 'currency/exchange/rate/source/timed_cache'
+
 include Sinatra::Authentication
 
 config = YAML.load(File.read(File.join(File.dirname(__FILE__),'config', "config.yml")))
@@ -16,7 +21,7 @@ LOCAL_CURRENCY = config['local_currency']
 
 get '/' do
   login_required 
-  
+
   @products = Product.find(:all)
   erb :index
 end

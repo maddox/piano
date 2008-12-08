@@ -42,8 +42,10 @@ table tr.totals td {
     <th>Date</th>
     <th>Type</th>
     <th>Units</th>
-    <th>Price</th>
-    <th>Total</th>
+    <th>Customer Price</th>
+    <th>Customer Total</th>
+    <th>Royalty Price</th>
+    <th>Royalty Total</th>
     <th>Country</th>
   </tr>
   <% product.daily_reports.each do |report| %>
@@ -51,8 +53,10 @@ table tr.totals td {
     <td><%= report.date_of %></td>
     <td><%= report.sale_type %></td>
     <td class="numeric"><%= report.units %></td>
+    <td class="numeric"><%= report.customer_price %></td>
+    <td class="numeric"><%= report.customer_subtotal_in_local_currency(LOCAL_CURRENCY) %></td>
     <td class="numeric"><%= report.royalty_price %></td>
-    <td class="numeric"><%= report.subtotal %></td>
+    <td class="numeric"><%= report.royalty_subtotal_in_local_currency(LOCAL_CURRENCY) %></td>
     <td><%= report.country.country_code %></td>
   </tr>
   <% end %>
@@ -61,7 +65,9 @@ table tr.totals td {
     <td>&nbsp;</td>
     <td class="numeric"><%= product.daily_reports.map { |report| report.units }.sum %></td>
     <td>&nbsp;</td>
-    <td class="numeric"><%= product.daily_reports.map { |report| report.subtotal }.sum %></td>
+    <td class="numeric"><%= product.daily_reports.map { |report| report.customer_subtotal_in_local_currency(LOCAL_CURRENCY) }.sum %></td>
+    <td>&nbsp;</td>
+    <td class="numeric"><%= product.daily_reports.map { |report| report.royalty_subtotal_in_local_currency(LOCAL_CURRENCY) }.sum %></td>
     <td>&nbsp;</td>
   </table>
 <% end %>
