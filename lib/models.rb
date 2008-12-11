@@ -16,6 +16,10 @@ end
 class Product < ActiveRecord::Base
   has_many :daily_reports, :order => :date_of
   
+  def total_units
+    self.daily_reports.map { |report| report.units }.sum
+  end
+  
   validates_uniqueness_of :vendor_identifier
 end
 

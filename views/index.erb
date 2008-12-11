@@ -34,19 +34,23 @@ table tr.totals td {
 
 
 
-<% @products.each do |product| %>
 
+<% @products.each do |product| %>
 <h2><%= product.vendor_identifier %></h2>
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Type</th>
-    <th>Units</th>
-    <th>Price</th>
-    <th>Total</th>
-    <th>Country</th>
-  </tr>
-  <% product.daily_reports.each do |report| %>
+<h3>Total Units: <%= product.total_units %></h3>
+
+<% product.daily_reports.group_by(&:date_of).each do |date, reports| %>
+  <h3><%= date %></h3>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Type</th>
+      <th>Units</th>
+      <th>Price</th>
+      <th>Total</th>
+      <th>Country</th>
+    </tr>
+  <% reports.each do |report| %>
   <tr>
     <td><%= report.date_of %></td>
     <td><%= report.sale_type %></td>
@@ -59,10 +63,11 @@ table tr.totals td {
   <tr class="totals">
     <td>&nbsp;</td>
     <td>&nbsp;</td>
-    <td class="numeric"><%= product.daily_reports.map { |report| report.units }.sum %></td>
+    <td class="numeric"><%= reports.map { |report| report.units }.sum %></td>
     <td>&nbsp;</td>
-    <td class="numeric"><%= product.daily_reports.map { |report| report.subtotal }.sum %></td>
+    <td class="numeric"><%= reports.map { |report| report.subtotal }.sum %></td>
     <td>&nbsp;</td>
   </table>
-<% end %>
+  <% end %>
+  <% end %>
 

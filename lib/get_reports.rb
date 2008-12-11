@@ -2,8 +2,17 @@ require 'rubygems'
 require 'mechanize'
 require File.join(File.dirname(__FILE__), 'models')
 
-itunes_connect_config = YAML.load(File.read(File.join(File.dirname(__FILE__), '../','config', "config.yml")))['itunes_connect']
-date = Date.today - 1
+config = YAML.load(File.read(File.join(File.dirname(__FILE__), '../', 'config', "config.yml")))
+itunes_connect_config = config['itunes_connect']
+local_currency = config['local_currency']
+
+if ARGV[0]
+  date = Date.parse(ARGV[0])
+else
+  date = Date.today - 1
+end
+
+puts "Downloading reports for #{date}"
 
 agent = WWW::Mechanize.new 
 agent.user_agent_alias = 'Mac Safari'
@@ -40,5 +49,6 @@ rows = (report_table/"tr")
                       :date_of => date,
                       :product => product,
                       :country => country )
+
 
 end
