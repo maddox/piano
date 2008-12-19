@@ -38,8 +38,10 @@ table tr.totals td {
 <% @products.each do |product| %>
 <h2><%= product.vendor_identifier %></h2>
 <h3>Total Units: <%= product.total_units %></h3>
+<h3>Total Sales: <%= product.total_sales %></h3>
+<h3>Total Upgrades: <%= product.total_upgrades %></h3>
 
-<% product.daily_reports.upgrades.group_by(&:date_of).each do |date, reports| %>
+<% product.daily_reports.sales.group_by(&:date_of).each do |date, reports| %>
   <h3><%= date %></h3>
   <table>
     <tr>

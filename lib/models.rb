@@ -19,6 +19,14 @@ class Product < ActiveRecord::Base
   def total_units
     self.daily_reports.map { |report| report.units }.sum
   end
+
+  def total_sales
+    self.daily_reports.sales.map { |report| report.units }.sum
+  end
+  
+  def total_upgrades
+    self.daily_reports.upgrades.map { |report| report.units }.sum
+  end
   
   validates_uniqueness_of :vendor_identifier
 end
