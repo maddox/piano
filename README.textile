@@ -54,11 +54,11 @@ Voila. There's all your reports.
 
 Set up a cron for get_reports.rb so it automatically fetches your reports every day.
 
-h2. What's next?
+h2. Features
 
-Piano doesn't do much yet. But its just getting started. Soon it will:
+The feature set is tiny for now. But its growing.
 
-* Dashboard showing total downloads
-* View reports by product or country
-* Sweet awesome graphs
-* authentication even
+* Dashboard interface showing sales data via graph
+* Browse reports by day
+* http basic authentication to protect your sales data
+
