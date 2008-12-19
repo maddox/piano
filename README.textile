@@ -42,6 +42,10 @@ h3. Get today's reports
 
 <code>ruby lib/get_reports.rb</code>
 
+Get up to 7 days worth of past reports by overriding the date. Sorry. Apple hates you, so they only provide up to 7 days of old reports.
+
+<code>ruby lib/get_reports.rb 2008-12-14</code>
+
 h3. Start application
 
 <code>ruby piano.rb</code>
