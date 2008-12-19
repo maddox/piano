@@ -4,7 +4,7 @@ Because Apple hates you.
 
 h2. What is it?
 
-Piano is a simple Sinatra app that displays your iTunes download data. It doesn't do much yet (really it does nothing to improve anything :), but advanced reporting will eventually be available. Maybe you want to help?
+Piano is a simple Sinatra app that displays your iTunes download data. It lets you browse your applications and view daily reports with totals and graphs. Its still a little rough but its getting there. Maybe you want to help?
 
 h2. How does it work?
 
