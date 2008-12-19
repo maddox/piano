@@ -21,6 +21,7 @@ h3. Gems
 * ActiveRecord
 * Yaml
 * sqlite3-ruby
+* googlecharts
 
 
 h3. Other stuff

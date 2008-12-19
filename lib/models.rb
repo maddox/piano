@@ -28,6 +28,10 @@ class Product < ActiveRecord::Base
     self.daily_reports.upgrades.map { |report| report.units }.sum
   end
   
+  def title
+    read_attribute(:title).blank? ? vendor_identifier : read_attribute(:title)
+  end
+  
   validates_uniqueness_of :vendor_identifier
 end
 
@@ -37,6 +41,10 @@ class DailyReport < ActiveRecord::Base
 
   named_scope :sales, :conditions => {:product_type => 1}, :order => 'date_of DESC'
   named_scope :upgrades, :conditions => {:product_type => 7}, :order => 'date_of DESC'
+  named_scope :yesterday, :conditions => {:date_of => (Date.today -1)}, :order => 'date_of DESC'
+  named_scope :sales_by_date, lambda { |date| {:conditions => {:date_of => date, :product_type => 1}, :order => 'date_of DESC'} }
+  named_scope :upgrades_by_date, lambda { |date| {:conditions => {:date_of => date, :product_type => 7}, :order => 'date_of DESC'} }
+  named_scope :by_date, lambda { |date| {:conditions => {:date_of => date}, :order => 'date_of DESC'} }
 
   def sale_type
     case product_type

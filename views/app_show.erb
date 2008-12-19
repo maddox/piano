@@ -1,0 +1,9 @@
+<h1><%= link_to @product.title, "/apps/#{@product.id}" %></h1>
+<ul>
+  <li>Total Units Moved: <%= @product.total_units %></li>
+  <li>Total Sales: <%= @product.total_sales %></li>
+  <li>Total Upgrades: <%= @product.total_upgrades %></li>
+  <li><%= link_to('View Today&#8217;s Report', "/apps/#{@product.id}/report") %></li>
+</ul>
+
+<p class="centered"><img src="<%= @sales_bar_graph %>" alt="graph" /></p>

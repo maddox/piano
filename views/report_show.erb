@@ -1,0 +1,36 @@
+<h1><%= link_to @product.title, "/apps/#{@product.id}" %></h1>
+<ul>
+  <li>Total Units Moved: <%= @product.total_units %></li>
+  <li>Total Sales: <%= @product.total_sales %></li>
+  <li>Total Upgrades: <%= @product.total_upgrades %></li>
+</ul>
+
+
+<h2 class="centered"><%= previous_date(@product.id, @the_date) %> Report for <%= @the_date == (Date.today-1) ? "Yesterday" : @the_date.strftime("%b %e, %Y") %> <%= next_date(@product.id, @the_date) %></h2>
+
+<% %w{sales upgrades}.each do |type| %>
+  <h3><%= type.capitalize %> Report</h3>
+  <table>
+    <tr>
+      <th>Units</th>
+      <th>Price</th>
+      <th>Total</th>
+      <th>Country</th>
+    </tr>
+  <% @product.daily_reports.send("#{type}_by_date", @the_date).each do |report| %>
+  <tr>
+    <td class="numeric"><%= report.units %></td>
+    <td class="numeric"><%= report.royalty_price %></td>
+    <td class="numeric"><%= report.subtotal %></td>
+    <td><%= report.country.country_code %></td>
+  </tr>
+  <% end %>
+  <tr class="totals">
+    <td class="numeric">Total: <%= @product.daily_reports.send("#{type}_by_date", @the_date).map { |report| report.units }.sum %></td>
+    <td class="numeric"><%=  %></td>
+    <td class="numeric"><%=  %></td>
+    <td></td>
+  </tr>
+  </table>
+
+<% end %>
