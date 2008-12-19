@@ -16,6 +16,8 @@ end
 class Product < ActiveRecord::Base
   has_many :daily_reports, :order => :date_of
   
+  validates_uniqueness_of :vendor_identifier
+  
   def total_units
     self.daily_reports.map { |report| report.units }.sum
   end
@@ -31,13 +33,14 @@ class Product < ActiveRecord::Base
   def title
     read_attribute(:title).blank? ? vendor_identifier : read_attribute(:title)
   end
-  
-  validates_uniqueness_of :vendor_identifier
+
 end
 
 class DailyReport < ActiveRecord::Base
   belongs_to :product
   belongs_to :country
+
+  validates_uniqueness_of :date_of, :scope => [:country_id, :product_id, :product_type ]
 
   named_scope :sales, :conditions => {:product_type => 1}, :order => 'date_of DESC'
   named_scope :upgrades, :conditions => {:product_type => 7}, :order => 'date_of DESC'
@@ -59,7 +62,6 @@ class DailyReport < ActiveRecord::Base
     royalty_price * units
   end
 
-  validates_uniqueness_of :date_of, :scope => [:country_id, :product_id ]
 end
 
 
