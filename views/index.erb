@@ -39,7 +39,7 @@ table tr.totals td {
 <h2><%= product.vendor_identifier %></h2>
 <h3>Total Units: <%= product.total_units %></h3>
 
-<% product.daily_reports.group_by(&:date_of).each do |date, reports| %>
+<% product.daily_reports.upgrades.group_by(&:date_of).each do |date, reports| %>
   <h3><%= date %></h3>
   <table>
     <tr>

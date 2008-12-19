@@ -27,6 +27,9 @@ class DailyReport < ActiveRecord::Base
   belongs_to :product
   belongs_to :country
 
+  named_scope :sales, :conditions => {:product_type => 1}, :order => 'date_of DESC'
+  named_scope :upgrades, :conditions => {:product_type => 7}, :order => 'date_of DESC'
+
   def sale_type
     case product_type
     when 1
