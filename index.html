@@ -66,15 +66,63 @@
 
   	<p>Piano gets your daily stats for your iPhone applications and stores them in a local sqlite database. Now we can interact with the data like you wish you could on Apple&#8217;s site.</p>
 
-</p><h2>Dependencies</h2>
-<p>Sinatra
-Mechanize
-ActiveRecord
-Yaml
-sqlite3-ruby
-googlecharts
+<h2>Dependencies</h2>
 
-</p>
+<ul>
+  <li>Sinatra</li>
+	<li>Mechanize</li>
+	<li>ActiveRecord</li>
+	<li>Yaml</li>
+	<li>sqlite3-ruby</li>
+	<li>googlecharts</li>
+</ul>
+
+	<h2>Getting Started!</h2>
+
+
+	<h3>Create the database</h3>
+
+
+<code>rake db:migrate</code>
+
+	<h3>Set up configs</h3>
+
+
+	<p>Enter your authentication info in <em>config/config.yml</em>. <em>itunes_connect</em> is your iTunes Connect login information. Piano is login information for Piano. You know, so you don&#8217;t publish your sales data to the world.</p>
+
+
+	<h3>Get today&#8217;s reports</h3>
+
+
+<code>ruby lib/get_reports.rb</code>
+
+	<p>Get up to 7 days worth of past reports by overriding the date. Sorry. Apple hates you, so they only provide up to 7 days of old reports.</p>
+
+
+<code>ruby lib/get_reports.rb 2008-12-14</code>
+
+	<h3>Start application</h3>
+
+
+<code>ruby piano.rb</code>
+
+	<p>Voila. There&#8217;s all your reports.</p>
+
+
+	<p>Set up a cron for get_reports.rb so it automatically fetches your reports every day.</p>
+
+	<h2>Features</h2>
+
+
+	<p>The feature set is tiny for now. But its growing.</p>
+
+
+	<ul>
+	<li>Dashboard interface showing sales data via graph</li>
+		<li>Browse reports by day</li>
+		<li>http basic authentication to protect your sales data</li>
+	</ul>
+
 <h2>License</h2>
 <p>MIT, duh</p>
 <h2>Authors</h2>
